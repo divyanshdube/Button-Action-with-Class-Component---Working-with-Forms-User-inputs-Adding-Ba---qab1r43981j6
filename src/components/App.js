@@ -4,23 +4,28 @@ import "../styles/App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.onClickHandler = this.onClickHandler.bind();
-  }
-
-  onClickHandler() {
-    <p id="para">
-      Hello, I've learnt to use the full-stack evaluation tool. This makes me so
-      happy
-    </p>;
+    this.state = {
+      pHidden: true,
+    };
   }
 
   render() {
     return (
       <div id="main">
-        {/* Do not remove this main div!! */}
-        <button id="click" onClick={this.onClickHandler}>
-          Click Me !
+        <button
+          id="click"
+          onClick={() => {
+            this.setState({ pHidden: false });
+          }}
+        >
+          Click Me!
         </button>
+        {this.state.pHidden ? null : (
+          <p id="para">
+            Hello, I've learnt to use the full-stack evaluation tool. This makes
+            me so happy
+          </p>
+        )}
       </div>
     );
   }
